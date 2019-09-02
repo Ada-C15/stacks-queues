@@ -1,76 +1,63 @@
-# Learning about Stacks and Queues
-In this project,
-  1. Together, we will write an implementation for a stack.
-  2. Together, we will test our implementation for a stack.
-  3. With a partner, you will write and test an implementation for a queue.
-  4. Together, we will think about how you might tackle the job-simulation problem identified below.
-    - Questions to think about:
-      + What should be the data type of `workers`?
-      + What should be the data type of `waiting`?
-  5. (OPTIONAL) On your own, you should use your implementation of stack and queue to code a solution to the job-simulation problem.
-    - By "use your stack and queue", I mean at some point you should say:
-      + something = `Stack.new`
-      + something = `Queue.new`
+# Stacks & Queues
 
-# Job Simulation Problem
-A company has a limited number of open positions (`jobs_available`) with more people wanting jobs (`job_seekers`) than the number of available positions. The company decides that they will allow people to work in three-month cycles. And at the end of each cycle, they will fire some people and hire others.
+In this exercise we will implement both a stack & a queue, and then use them in a variety of hands-on exercises.  
 
-To begin this process:
-- All people wanting jobs will be added to a `waiting` list as `Worker #1`, `Worker #2`, `Worker #3`, etc.
-- Then all open positions will be filled by moving people from `waiting` to `workers`, in the order they were added to the waitlist
+## Learning Goals
 
-At the end of the three-month cycle, the managers will roll a die to determine the number of people who will lose their jobs. The company will use the policy of last-hired-first-fired. So, for example, if the die roll is 3, the last 3 people hired will lose their jobs to the first 3 people on the waiting list. People losing their jobs will be placed on the back of the waiting list in the order that they are fired. This process will continue for every cycle.
+By the end of this exercise you should be able to:
 
-During one cycle:
-- Roll a die (`roll`)
-- Fire `roll` number of people
-- Hire `roll` number of people
+- Implement a stack & a queue using linked lists and arrays
+- Explain how a circular buffer works
+- Use a stack and a queue to solve common interview problems.
 
-## Example
-Yours doesn't need to look exactly like mine!
-```
-------------------------------
-Before the simulation starts
-Employed: ["Worker #1", "Worker #2", "Worker #3", "Worker #4", "Worker #5", "Worker #6"]
-Waitlist: ["Worker #7", "Worker #8", "Worker #9", "Worker #10"]
-------------------------------
-<enter to cycle, anything else to quit>
+## Wave 1 - Implement a Stack
 
--------Cycle 1-------
-Managers roll a 6
-FIRE:	Worker #6
-FIRE:	Worker #5
-FIRE:	Worker #4
-FIRE:	Worker #3
-FIRE:	Worker #2
-FIRE:	Worker #1
-HIRE:	Worker #7
-HIRE:	Worker #8
-HIRE:	Worker #9
-HIRE:	Worker #10
-HIRE:	Worker #6
-HIRE:	Worker #5
-Employed: ["Worker #7", "Worker #8", "Worker #9", "Worker #10", "Worker #6", "Worker #5"]
-Waitlist: ["Worker #4", "Worker #3", "Worker #2", "Worker #1"]
+Using a Linked list (from a previous exercise) implement a Stack with the following methods:
 
--------Cycle 2-------
-Managers roll a 2
-FIRE:	Worker #5
-FIRE:	Worker #6
-HIRE:	Worker #4
-HIRE:	Worker #3
-Employed: ["Worker #7", "Worker #8", "Worker #9", "Worker #10", "Worker #4", "Worker #3"]
-Waitlist: ["Worker #2", "Worker #1", "Worker #5", "Worker #6"]
+- `push(value)` - Adds the value to the top of the stack
+- `pop` - Removes and returns an element from the top of the stack
+- `empty?` returns true if the stack is empty and false otherwise
 
--------Cycle 3-------
-Managers roll a 3
-FIRE:	Worker #3
-FIRE:	Worker #4
-FIRE:	Worker #10
-HIRE:	Worker #2
-HIRE:	Worker #1
-HIRE:	Worker #5
-Employed: ["Worker #7", "Worker #8", "Worker #9", "Worker #2", "Worker #1", "Worker #5"]
-Waitlist: ["Worker #6", "Worker #3", "Worker #4", "Worker #10"]
-end
-```
+## Wave 2 Implement a Queue
+
+Using a circular buffer implement a Queue with the following methods:
+
+- `enqueue(value)` - Adds the value to the back of the queue.
+- `dequeue` - removes and returns a value from the front of the queue
+- `empty?` returns true if the queue is empty and false otherwise
+
+## Wave 3
+
+Complete the methods in `lib/problems.rb` including:
+
+### `balanced(string)`
+
+Given a string containing opening and closing braces, check if it represents a balanced expression or not.
+
+For example:
+
+`{[{}{}]}`, and `{{}{}}` are balanced expressions.
+
+`{()}[)`, and `{(})` are not balanced
+
+### `evaluate_postfix(expression)`
+
+For solving a mathematical expression we sometimes use postfix form.  For example:  `35+` in postfix evaluates to 3 + 5 = 8.  
+
+Similarly `35+6*` = (3 + 5) * 6
+
+Here also we have to use the stack data structure to solve the postfix expressions.
+
+From the postfix expression, when some operands are found, push them in the stack. When some operator is found, two items are popped from the stack and the operation is performed in correct sequence. After that, the result is also pushed in the stack for future use. After completing the whole expression, the final result is also stored in the stack top.
+
+**Example: Input and Output**
+
+**Input:**
+  Postfix expression: 53+62/*35*+
+
+**Output:**
+  The result is: 39
+
+## Optional Wave 4
+
+If you finish the previous waves, complete [breadth-first-search](https://www.geeksforgeeks.org/bfs-vs-dfs-binary-tree/) on the binary trees project using a Queue.  

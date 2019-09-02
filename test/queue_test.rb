@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/reporters'
-require_relative '../lib/Queue'
+require_relative '../lib/queue'
+
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 describe "Test Queue Implementation" do
@@ -28,7 +29,6 @@ describe "Test Queue Implementation" do
   it "starts the size of a Queue at 0" do
     skip
     q = Queue.new
-    q.size.must_equal 0
     q.empty?.must_equal true
   end
 
@@ -38,7 +38,6 @@ describe "Test Queue Implementation" do
     q.enqueue(5)
     removed = q.dequeue
     removed.must_equal 5
-    q.size.must_equal 0
     q.empty?.must_equal true
   end
 
@@ -50,7 +49,6 @@ describe "Test Queue Implementation" do
     q.enqueue(7)
     removed = q.dequeue
     removed.must_equal 5
-    q.size.must_equal 2
     q.to_s.must_equal "[3, 7]"
   end
 
@@ -60,12 +58,9 @@ describe "Test Queue Implementation" do
     q.empty?.must_equal true
     q.enqueue(-1)
     q.enqueue(-60)
-    q.size.must_equal 2
     q.empty?.must_equal false
     q.dequeue
-    q.size.must_equal 1
     q.dequeue
-    q.size.must_equal 0
     q.empty?.must_equal true
   end
 
@@ -74,14 +69,8 @@ describe "Test Queue Implementation" do
     q = Queue.new
     q.enqueue(40)
     q.enqueue(22)
-    q.front.must_equal 40
     q.enqueue(3)
     q.dequeue
-    q.front.must_equal 22
+    expect(q.dequeue).must_equal 22
   end
-
-  # Challege Tests you could write yourself:
-  # it "doesn't alter the size when you call front" do
-  # it "raises an error if you try to dequeue from an empty Queue" do
-  # it "raises an error if you try to call front on an empty Queue" do
 end
