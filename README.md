@@ -9,7 +9,7 @@ Due:  **Monday Sept 9th**
 By the end of this exercise you should be able to:
 
 - Implement a stack & a queue using linked lists and arrays
-- Explain how a circular buffer works
+- Write a Queue with a circular buffer
 - Use a stack and a queue to solve common interview problems.
 
 ## Wave 1 - Implement a Stack
