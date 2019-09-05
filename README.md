@@ -1,6 +1,8 @@
 # Stacks & Queues
 
-In this exercise we will implement both a stack & a queue, and then use them in a variety of hands-on exercises.  
+In this exercise we will implement both a stack & a queue, and then use them in a variety of hands-on exercises.
+
+Due:  **Monday Sept 16th**
 
 ## Learning Goals
 
