@@ -42,6 +42,9 @@ For example:
 
 `{()}[)`, and `{(})` are not balanced
 
+
+## Optional Wave 4
+
 ### `evaluate_postfix(expression)`
 
 For solving a mathematical expression we sometimes use postfix form.  For example:  `35+` in postfix evaluates to 3 + 5 = 8.  
@@ -60,6 +63,7 @@ From the postfix expression, when some operands are found, push them in the stac
 **Output:**
   The result is: 39
 
-## Optional Wave 4
+
+#### Additional Exercise
 
 If you finish the previous waves, complete [breadth-first-search](https://www.geeksforgeeks.org/bfs-vs-dfs-binary-tree/) on the binary trees project using a Queue.  
