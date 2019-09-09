@@ -58,7 +58,7 @@ From the postfix expression, when some operands are found, push them in the stac
 **Example: Input and Output**
 
 **Input:**
-  Postfix expression: 53+62/*35*+
+  Postfix expression: `53+62/*35*+`
 
 **Output:**
   The result is: 39
