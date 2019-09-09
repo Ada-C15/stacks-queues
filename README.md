@@ -2,7 +2,7 @@
 
 In this exercise we will implement both a stack & a queue, and then use them in a variety of hands-on exercises.
 
-Due:  **Monday Sept 9th**
+Due:  
 
 ## Learning Goals
 
