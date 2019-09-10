@@ -28,6 +28,11 @@ describe "Test wave 3 problems" do
       expect(balanced('[]')).must_equal true
       expect(balanced('{}')).must_equal true
     end
+
+    it "also works if the string has opens and closes in the beginning and end" do
+      skip
+      expect(balanced('[]()')).must_equal true
+    end
   end
 
   describe "postfix" do
