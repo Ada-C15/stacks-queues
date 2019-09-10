@@ -73,7 +73,6 @@ describe "Test Queue Implementation" do
     q.dequeue
     expect(q.dequeue).must_equal 22
   end
-
   it "works for a large Queue" do
     q = Queue.new
     q.enqueue(10)
@@ -93,9 +92,15 @@ describe "Test Queue Implementation" do
     q.enqueue(130)
     q.enqueue(140)
     q.enqueue(150)
+    q.enqueue(150)
+    q.enqueue(160)
+    q.enqueue(170)
+    q.enqueue(180)
+    q.enqueue(190)
+    q.enqueue(200)
+    q.enqueue(210)
+    q.dequeue
 
-    expect(q.to_s).must_equal('[30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150]')
-
-
+    expect(q.to_s).must_equal('[40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240]')
   end
 end
