@@ -1,7 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/reporters'
-require_relative '../lib/stack'
-Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
+require_relative 'test_helper'
 
 describe "Test Stack Implementation" do
   it "creates a Stack" do
