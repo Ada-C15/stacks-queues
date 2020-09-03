@@ -3,13 +3,13 @@ require_relative 'test_helper'
 describe "Test Stack Implementation" do
   it "creates a Stack" do
     s = Stack.new
-    s.class.must_equal Stack
+    expect(s.class).must_equal Stack
   end
 
   it "pushes something onto a empty Stack" do
     s = Stack.new
     s.push(10)
-    s.to_s.must_equal "[10]"
+    expect(s.pop).must_equal 10
   end
 
   it "pushes multiple somethings onto a Stack" do
@@ -17,7 +17,9 @@ describe "Test Stack Implementation" do
     s.push(10)
     s.push(20)
     s.push(30)
-    s.to_s.must_equal "[10, 20, 30]"
+    expect(s.pop).must_equal 30
+    expect(s.pop).must_equal 20
+    expect(s.pop).must_equal 10
   end
 
   it "starts the stack empty" do
@@ -39,7 +41,6 @@ describe "Test Stack Implementation" do
     s.push(3)
     s.push(7)
     removed = s.pop
-    removed.must_equal 7
-    s.to_s.must_equal "[5, 3]"
+    expect(removed).must_equal 7
   end
 end
