@@ -22,7 +22,7 @@ Using a Linked list (from a previous exercise) implement a Stack with the follow
 
 ## Wave 2 Implement a Queue
 
-Using a circular buffer implement a Queue with the following methods:
+Using a circular buffer with an internal array starting at 20 elements, implement a Queue with the following methods:
 
 - `enqueue(value)` - Adds the value to the back of the queue.
 - `dequeue` - removes and returns a value from the front of the queue
