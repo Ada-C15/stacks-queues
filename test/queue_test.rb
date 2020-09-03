@@ -25,7 +25,7 @@ describe "Test Queue Implementation" do
     expect(q.to_s).must_equal "[10, 20, 30]"
   end
 
-  it "starts the size of a Queue at 0" do
+  it "starts the Queue empty" do
     
     q = Queue.new
     q.empty?.must_equal true
@@ -41,7 +41,7 @@ describe "Test Queue Implementation" do
     expect(q.empty?).must_equal true
   end
 
-  it "removes something from the Queue" do
+  it "can remove something from the Queue" do
     
     q = Queue.new
     q.enqueue(5)
@@ -74,7 +74,6 @@ describe "Test Queue Implementation" do
   end
 
   it "returns the front element in the Queue" do
-    
     q = Queue.new
     q.enqueue(40)
     q.enqueue(22)

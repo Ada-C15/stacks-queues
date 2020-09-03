@@ -2,7 +2,7 @@ require_relative 'test_helper'
 
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
-describe "Test wave 3 problems" do
+xdescribe "Test wave 3 problems" do
   describe "balanced" do
     it "Given balanced strings it should return true" do
       
