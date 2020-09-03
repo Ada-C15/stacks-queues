@@ -42,6 +42,7 @@ For example:
 
 `{()}[)`, and `{(})` are not balanced
 
+**Hint**:  You can use a stack here!
 
 ## Optional Wave 4
 
