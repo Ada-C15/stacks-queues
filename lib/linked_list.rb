@@ -37,7 +37,7 @@ class LinkedList
 
       value = @head.data
       @head = @head.next
-      @head.previous = nil
+      @head.previous = nil unless @head.nil?
       return value
     end
 
