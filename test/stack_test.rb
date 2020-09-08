@@ -31,8 +31,8 @@ describe "Test Stack Implementation" do
     s = Stack.new
     s.push(5)
     removed = s.pop
-    removed.must_equal 5
-    s.empty?.must_equal true
+    expect(removed).must_equal 5
+    expect(s.empty?).must_equal true
   end
 
   it "removes the right something (LIFO)" do
