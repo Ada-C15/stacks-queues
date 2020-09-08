@@ -46,8 +46,8 @@ describe "Test Queue Implementation" do
     q = Queue.new
     q.enqueue(5)
     removed = q.dequeue
-    removed.must_equal 5
-    q.empty?.must_equal true
+    expect(removed).must_equal 5
+    expect(q.empty?).must_equal true
   end
 
   it "removes the right something (LIFO)" do
@@ -57,20 +57,20 @@ describe "Test Queue Implementation" do
     q.enqueue(3)
     q.enqueue(7)
     removed = q.dequeue
-    removed.must_equal 5
-    q.to_s.must_equal "[3, 7]"
+    expect(removed).must_equal 5
+    expect(q.to_s).must_equal "[3, 7]"
   end
 
   it "properly adjusts the size with enqueueing and dequeueing" do
     
     q = Queue.new
-    q.empty?.must_equal true
+    expect(q.empty?).must_equal true
     q.enqueue(-1)
     q.enqueue(-60)
-    q.empty?.must_equal false
+    expect(q.empty?).must_equal false
     q.dequeue
     q.dequeue
-    q.empty?.must_equal true
+    expect(q.empty?).must_equal true
   end
 
   it "returns the front element in the Queue" do
