@@ -23,8 +23,15 @@ Using a Linked list (from a previous exercise) implement a Stack with the follow
 Using a circular buffer with an internal array starting at 20 elements, implement a Queue with the following methods:
 
 - `enqueue(value)` - Adds the value to the back of the queue.
+  - This method should raise a `QueueFullException` if the buffer size is exceeded (20 elements).
 - `dequeue` - removes and returns a value from the front of the queue
 - `empty?` returns true if the queue is empty and false otherwise
+
+**Note**:  You are **required** to implement this Queue class using a circular buffer.  Do **not** use a linked list.
+
+## Going Further
+
+Currently the Queue should report a `QueueFullException` if more elements are added than can be stored in the queue.  To go further make the buffer resize if more elements are needed, but retain the circular buffer methodology.  You will need to adjust a test.
 
 #### Additional Exercise
 
