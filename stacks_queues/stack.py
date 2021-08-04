@@ -9,13 +9,13 @@ class Stack:
         self.store = LinkedList()
 
     def push(self, element):
-        self.store.add_first(element)
+        pass
 
     def pop(self):
-        return self.store.remove_first()
+        pass
 
     def empty(self):
-        return self.store.empty()
+        pass
 
     def __str__(self):
-      return str(self.store)
+      pass
