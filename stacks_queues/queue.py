@@ -7,6 +7,7 @@ class QueueFullException(Exception):
 class QueueEmptyException(Exception):
     pass
 
+
 class Queue:
 
     def __init__(self):
@@ -23,7 +24,15 @@ class Queue:
             In the store are occupied
             returns None
         """
-        pass
+        if self.size == self.buffer_size:
+            raise QueueFullException()
+        if self.size == 0:
+            self.front = 0
+        self.rear = (self.rear + 1) % self.buffer_size
+        self.store[self.rear] = element
+        self.size = self.size + 1
+    
+        
 
     def dequeue(self):
         """ Removes an element from the Queue
@@ -31,27 +40,39 @@ class Queue:
             The Queue is empty.
             returns None
         """
-        pass
+        if self.size == 0:
+            raise QueueEmptyException()
+
+    
+        tmp = self.store[self.front]
+        self.front = (self.front + 1) % self.buffer_size
+        self.size = self.size - 1
+        return tmp
 
     def front(self):
         """ Returns an element from the front
             of the Queue and None if the Queue
             is empty.  Does not remove anything.
         """
-        pass
+        if self.empty():
+            return None
+        return self.store[self.front]
         
 
     def size(self):
         """ Returns the number of elements in
             The Queue
         """
-        pass
+        return self.size
 
     def empty(self):
         """ Returns True if the Queue is empty
             And False otherwise.
         """
-        pass
+        if self.size == 0:
+            return True
+        
+        return False
 
     def __str__(self):
         """ Returns the Queue in String form like:
@@ -59,4 +80,14 @@ class Queue:
             Starting with the front of the Queue and
             ending with the rear of the Queue.
         """
-        pass
+        data_list = []
+        if self.front <= self.rear:
+            for i in range(self.front,self.front + self.size):
+                data_list.append(self.store[i])
+        else:
+            for i in range (self.front, self.buffer_size):
+                data_list.append(self.store[i])
+            for i in range(0, self.rear +1):
+                data_list.append(self.store[i])
+
+        return str(data_list)
