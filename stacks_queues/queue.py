@@ -33,9 +33,11 @@ class Queue:
             self.store[self.rear] = element
             self.size += 1
         else:
+            #Queue has some data and can store some data too
             self.rear = (self.rear +1) % self.buffer_size
             # rear needs to wrap around
             self.store[self.rear] = element
+            #enqueue at the rare end
             self.size += 1
         
     
@@ -61,9 +63,11 @@ class Queue:
             self.front = -1
             self.rear = -1
         elif self.front == self.buffer_size -1:
-            
+            #front has reached the end iindex of the array
+            #front needs to wrap around and start dequeue from the index 0 of the array 
             self.front = 0
         else:
+            #index is incrementing
             self.front += 1
         
         return data
@@ -99,14 +103,19 @@ class Queue:
         """
         data = []
         
+        #if the array is empty
         if self.front == -1:
             return str(data)
+        
         elif self.front <= self.rear:
+            # if there is some data in the Queue
             for i in range(self.front, (self.rear+1)):
                 data.append(self.store[i])
         else:
+            #if rare has wrapped around and some dequeues have happened
+            #which results in index value of rare < front
             for i in range(self.front, self.buffer_size):
                 data.append(self.store[i])
-            for i in range(0, self.rear +1):
+            for i in range(0, (self.rear +1)):
                 data.append(self.store[i])
         return str(data)
