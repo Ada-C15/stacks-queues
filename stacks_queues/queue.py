@@ -1,11 +1,14 @@
 
 INITIAL_QUEUE_SIZE = 20
 
+
 class QueueFullException(Exception):
     pass
 
+
 class QueueEmptyException(Exception):
     pass
+
 
 class Queue:
 
@@ -15,7 +18,6 @@ class Queue:
         self.front = -1
         self.rear = -1
         self.size = 0
-      
 
     def enqueue(self, element):
         """ Adds an element to the Queue
@@ -23,6 +25,7 @@ class Queue:
             In the store are occupied
             returns None
         """
+        
         pass
 
     def dequeue(self):
@@ -39,7 +42,6 @@ class Queue:
             is empty.  Does not remove anything.
         """
         pass
-        
 
     def size(self):
         """ Returns the number of elements in
