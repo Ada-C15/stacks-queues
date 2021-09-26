@@ -108,7 +108,7 @@ class Queue:
             return str(data)
         
         elif self.front <= self.rear:
-            # if there is some data in the Queue
+            # if there is some data in the Queue and rare is not wrapped around
             for i in range(self.front, (self.rear+1)):
                 data.append(self.store[i])
         else:
