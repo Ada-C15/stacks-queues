@@ -10,6 +10,26 @@ By the end of this exercise you should be able to:
 - Write a Queue using a circular buffer
 - Use a stack and a queue to solve common interview problems.
 
+## Getting Started
+
+As usual with a python project, create a virtual environment:
+
+```
+python3 -m venv venv
+```
+
+Then activate the virtual environment
+
+```
+source venv/bin/activate
+```
+
+Then install the required packages.
+
+```
+pip install -r requirements.txt
+```
+
 ## Wave 1 - Implement a Stack
 
 Using a Linked list (from a previous exercise) implement a Stack with the following methods:
