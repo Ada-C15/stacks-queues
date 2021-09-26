@@ -43,4 +43,4 @@ class Stack:
             Starting with the top of the Stack and
             ending with the bottom of the Stack.
         """
-        return self.store.visit()
+        return str(self.store.visit())
