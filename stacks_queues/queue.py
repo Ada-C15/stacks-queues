@@ -44,7 +44,7 @@ class Queue:
         self.size -= 1
         return temp_front
 
-    def front(self):
+    def get_front(self):
         """ Returns an element from the front
             of the Queue and None if the Queue
             is empty.  Does not remove anything.
@@ -53,7 +53,7 @@ class Queue:
             return None
         return self.store[self.front]
 
-    def size(self):
+    def get_size(self):
         """ Returns the number of elements in
             The Queue
         """
@@ -63,7 +63,7 @@ class Queue:
         """ Returns True if the Queue is empty
             And False otherwise.
         """
-        if self.size == 0:
+        if self.get_size() == 0:
             return True
         return False
 
@@ -75,32 +75,20 @@ class Queue:
         """
         queue_list = []
 
+        # prints an empty list if the queue is empty
         if self.empty():
             return str(queue_list)
 
+        # if the queue is not empty, append every item from the front pointer to the end of the queue
         for i in range(self.front + 1, self.buffer_size):
             if self.store[i] != None:
                 queue_list.append(self.store[i])
 
-        if self.rear < self.front:
-            # why isn't this if statement being hit?
-            # does it have to do with the way I'm setting rear in enqueue()?
+        # if the list wraps all the way around, add every item from the beginning of the queue to the rear pointer
+        if self.rear <= self.front:
+
             for i in range(0, self.rear + 1):
                 if self.store[i] != None:
                     queue_list.append(self.store[i])
 
         return str(queue_list)
-
-        # if self.front <= self.rear:
-        #     for elem in self.store:
-        #         if elem != None:
-        #             queue_list.append(elem)
-        #     return str(queue_list)
-        # else:
-        #     # test is never hitting this else statement...why?
-        #     for i in range(0, self.rear + 1):
-        #         queue_list.append(self.store[i])
-
-        #     for i in range(self.front, self.rear):
-        #         queue_list.append(self.store[i])
-        #     return str(queue_list)

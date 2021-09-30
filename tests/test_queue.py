@@ -54,7 +54,7 @@ def test_with_large_queue(queue):
 
     for num in [40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220]:
         queue.enqueue(num)
-    
+
     assert str(queue) == "[30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220]"
 
     with pytest.raises(QueueFullException):
