@@ -43,12 +43,12 @@ class LinkedList:
         self.head = self.head.next
         if self.head:
             self.head.previous = None
-        
+
         return value
 
 
     def empty(self):
-      return not self.head
+        return not self.head
 
     # method to find if the linked list contains a node with specified value
     # returns true if found, false otherwise
@@ -57,7 +57,7 @@ class LinkedList:
     def search(self, value):
         if not self.head:
             return False
-        
+
         if self.head.value == value:
             return True
 
@@ -66,7 +66,7 @@ class LinkedList:
             if current.value == value:
                 return True
             current = current.next
-        
+
         return False
 
 
@@ -77,7 +77,7 @@ class LinkedList:
     def find_max(self):
         if not self.head:
             return None
-        
+
         current = self.head
         max = current.value
 
@@ -102,7 +102,7 @@ class LinkedList:
             if min > current.value:
                 min = current.value
             current = current.next
-        
+
         return min
 
     # method that returns the length of the singly linked list
@@ -111,13 +111,13 @@ class LinkedList:
     def length(self):
         if not self.head:
             return 0
-        
+
         current = self.head
         length = 0
         while current:
             length += 1
             current = current.next
-        
+
         return length
 
     # method that returns the value at a given index in the linked list
@@ -136,7 +136,7 @@ class LinkedList:
                 return current.value
             count += 1
             current = current.next
-        
+
         return None
 
     # method to print all the values in the linked list
@@ -149,7 +149,7 @@ class LinkedList:
         while current:
             values.append(current.value)
             current = current.next
-        
+
         print(", ".join(values))
 
     # method to delete the first node found with specified value
@@ -158,7 +158,7 @@ class LinkedList:
     def delete(self, value):
         if not self.head:
             return None
-        
+
         current = self.head
         if current.value == value:
             self.head = current.next
@@ -210,7 +210,7 @@ class LinkedList:
         if not self.head:
             self.add_first(value)
             return
-    
+
         self.tail.next = new_node
         new_node.previous = self.tail
         self.tail = new_node
