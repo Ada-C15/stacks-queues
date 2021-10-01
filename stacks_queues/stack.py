@@ -2,6 +2,7 @@ from stacks_queues.linked_list import LinkedList
 
 class StackEmptyException(Exception):
     pass
+    # how does an exception class work?
 
 class Stack:
 
@@ -10,24 +11,29 @@ class Stack:
 
     def push(self, element):
         """ Adds an element to the top of the Stack.
-            Returns None
+            Returns element
         """
-        pass
+        # why should this return None?
+        return self.store.add_first(element)
 
     def pop(self):
         """ Removes an element from the top
             Of the Stack
             Raises a StackEmptyException if
             The Stack is empty.
-            returns None
+            returns element
         """
-        pass
+        if self.empty():
+            raise StackEmptyException()
+        return self.store.remove_first()
 
     def empty(self):
         """ Returns True if the Stack is empty
             And False otherwise
         """
-        pass
+        if self.store.length() == 0:
+            return True
+        return False
 
     def __str__(self):
         """ Returns the Stack in String form like:
@@ -35,4 +41,7 @@ class Stack:
             Starting with the top of the Stack and
             ending with the bottom of the Stack.
         """
-        pass
+        stack_list = []
+        for elem in self.store:
+            stack_list.append(elem)
+        return str(stack_list)
