@@ -80,6 +80,7 @@ class Queue:
             ending with the rear of the Queue.
         """
         data_list = []
+        
         for i in range(self.front,self.front + self.size):
             i = i % self.buffer_size
         
