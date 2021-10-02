@@ -79,14 +79,9 @@ class Queue:
             Starting with the front of the Queue and
             ending with the rear of the Queue.
         """
-        queue_list = []
-        if self.front <= self.rear:
-            for i in range(self.front,self.front + self.size):
-                queue_list.append(self.store[i])
-        else:
-            for i in range (self.front, self.buffer_size):
-                queue_list.append(self.store[i])
-            for i in range(0, self.rear +1):
-                queue_list.append(self.store[i])
-
-        return str(queue_list)
+        data_list = []
+        for i in range(self.front,self.front + self.size):
+            i = i % self.buffer_size
+        
+            data_list.append(self.store[i])
+        return str(data_list)
