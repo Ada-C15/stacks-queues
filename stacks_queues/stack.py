@@ -7,12 +7,17 @@ class Stack:
 
     def __init__(self):
         self.store = LinkedList()
+        # could I make a top of the stack? 
+        # self.store.head   
 
     def push(self, element):
         """ Adds an element to the top of the Stack.
             Returns None
-        """
-        pass
+        """ 
+        # here I'm deciding that the top of my stack is the head of link list with this method
+        self.store.add_first(element)
+        return
+        
 
     def pop(self):
         """ Removes an element from the top
@@ -21,13 +26,22 @@ class Stack:
             The Stack is empty.
             returns None
         """
-        pass
+        if not self.store.head:
+            raise StackEmptyException("Stack is empty")
+
+        return self.store.remove_first()
 
     def empty(self):
         """ Returns True if the Stack is empty
             And False otherwise
         """
-        pass
+        if not self.store.head:
+            return True
+        else:
+            return False
+        #  same as
+        # return not self.store.head
+        
 
     def __str__(self):
         """ Returns the Stack in String form like:
@@ -35,4 +49,24 @@ class Stack:
             Starting with the top of the Stack and
             ending with the bottom of the Stack.
         """
-        pass
+        if not self.store.head:
+            return None
+
+        # return  str(self.store)
+        return self.store.__str__()
+        
+    
+    def top(self):
+        """ returns top of the stack without changing the stack, using public methods only
+        """ 
+        # here I'm checking if stack is not empty
+        if not self.store.head:
+            return None
+        
+        return self.store.head
+
+    def reverse(self):
+        if not self.store.head:
+            return
+        
+        self.store.reverse()
