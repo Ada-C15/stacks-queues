@@ -1,7 +1,9 @@
 from stacks_queues.linked_list import LinkedList
 
+
 class StackEmptyException(Exception):
     pass
+    
 
 class Stack:
 
@@ -12,7 +14,7 @@ class Stack:
         """ Adds an element to the top of the Stack.
             Returns None
         """
-        pass
+        self.store.add_first(element)   
 
     def pop(self):
         """ Removes an element from the top
@@ -21,13 +23,21 @@ class Stack:
             The Stack is empty.
             returns None
         """
-        pass
+    
+        if not self.store:
+            raise StackEmptyException("Stack is empty")
+            
+        self.store.remove_first()
+        return None
 
     def empty(self):
         """ Returns True if the Stack is empty
             And False otherwise
         """
-        pass
+        if self.store.length() == 0:
+            return True
+        else:
+            return False
 
     def __str__(self):
         """ Returns the Stack in String form like:
@@ -35,4 +45,42 @@ class Stack:
             Starting with the top of the Stack and
             ending with the bottom of the Stack.
         """
-        pass
+        return str() 
+
+    def top(self):
+        #returns the top of the stack without changing the stack
+        #using only public stack methods
+        #1. Pop an element off the stack and save it to temp variable
+        #2 then push it back onto the stack
+        #return temp
+        
+        temp = self.store.get_first()
+        self.store.add_first(temp)
+        return temp
+
+
+    def reverse(self,str):
+        #method which takes a strinf as an argument. Returns the reversed string
+        #using stack
+
+        n = len(str)
+        reversedStr = ""
+
+        #push characters onto the stack
+        for i in range(0, n, 1):
+            self.store.add_first(str[i])
+        
+        #pop them off the stack and save to reversedStr
+        while not self.store.empty():
+            reversedStr += self.store.remove_first()
+        
+        return reversedStr
+
+
+        
+str = "Paul"
+new_stack = Stack()
+reversed_string = new_stack.reverse(str)
+print(reversed_string)
+        
+        
