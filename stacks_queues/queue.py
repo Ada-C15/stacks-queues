@@ -23,11 +23,8 @@ class Queue:
             In the store are occupied
             returns None
         """
-        #pseudeo code implementation:
-        #Move back to the next free position)the next position clockwise
-        # back = (back + 1 ) % size;
-        #else back = back + 1;
 
+        #note:
         #You could increment and decrement size if you want to keep track of size
 
         #check to see if queue is full (front == (back + 1) mod size;)
@@ -128,8 +125,15 @@ class Queue:
         #maybe use a while
         #prob need to typecaste
         
-        for i in range(len(self.store)):
-            
-            str.append(char)
+        
+        current = self.front
+
+        while current is not None:
+
+            current = (self.front + 1) % self.buffer_size
+            str.append(current)
         
         return str
+
+
+
