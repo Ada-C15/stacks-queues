@@ -23,12 +23,14 @@ class Stack:
             The Stack is empty.
             returns None
         """
-    
-        if not self.store:
+        #self.store will never be None 
+        if self.store.empty():
             raise StackEmptyException("Stack is empty")
+            return None
             
-        self.store.remove_first()
-        return None
+        return self.store.remove_first()
+
+
 
     def empty(self):
         """ Returns True if the Stack is empty
@@ -45,7 +47,7 @@ class Stack:
             Starting with the top of the Stack and
             ending with the bottom of the Stack.
         """
-        return str() 
+        return self.store.__str__() 
 
     def top(self):
         #returns the top of the stack without changing the stack

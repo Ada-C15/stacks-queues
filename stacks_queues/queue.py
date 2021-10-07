@@ -28,8 +28,10 @@ class Queue:
         # back = (back + 1 ) % size;
         #else back = back + 1;
 
+        #You could increment and decrement size if you want to keep track of size
+
         #check to see if queue is full (front == (back + 1) mod size;)
-        if self.front == (self.rear + 1) % self.size():  #size?
+        if self.front == (self.rear + 1) % self.buffer_size:  #size?
             raise QueueFullException("Queue is full")
         
         #if queue is empty
@@ -40,7 +42,7 @@ class Queue:
 
         else:
         #increment that back pointer
-            self.rear = (self.rear + 1) % self.size();
+            self.rear = (self.rear + 1) % self.buffer_size;
             self.store[self.rear] = element;
 
         #why return None?
@@ -54,6 +56,7 @@ class Queue:
         """
         if (self.front == -1):
             raise QueueEmptyException("The Queue is empty")
+
         
         #if there is only one element in the queue
         elif (self.front == self.rear):
@@ -64,16 +67,16 @@ class Queue:
             self.rear = -1
 
             #return temp value? why return None here?
-            return None
+            return temp
         
         else:
             temp = self.store[self.front]
 
             #increment front counter 
-            self.front = (self.front + 1) % self.size
+            self.front = (self.front + 1) % self.buffer_size
 
             #return None?
-            return None
+            return temp
 
         
 
@@ -121,8 +124,12 @@ class Queue:
         """
         str = []
 
+        #modulus operater move through the queue (start current index at the front and keep adjusting until i reach the back)
+        #maybe use a while
+        #prob need to typecaste
+        
         for i in range(len(self.store)):
-            char = self.dequeue()
+            
             str.append(char)
         
         return str
