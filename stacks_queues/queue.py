@@ -24,10 +24,6 @@ class Queue:
             returns None
         """
 
-        #note:
-        #I can see from the tests that my implementation of enqueue does not allow for 
-        #mutliple enqueue of elements but I cannot figure out why...
-
         #check to see if queue is full (front == (back + 1) mod size;)
         if self.front == (self.rear + 1) % self.buffer_size:  #size?
             raise QueueFullException("Queue is full")
@@ -44,7 +40,7 @@ class Queue:
             self.store[self.rear] = element
             self.size += 1
 
-        return self.rear
+        # return self.rear
 
     def dequeue(self):
         """ Removes an element from the Queue
@@ -80,13 +76,11 @@ class Queue:
             is empty.  Does not remove anything.
         """
         
-        # if self.empty:
-        #     return None
-        
-        # else:
-        #     temp = self.store[self.front]
-        #     #do I need to enqueue this element again?
-        #     return temp
+        if (self.front == -1):
+            return None
+
+        else:
+            return self.store[self.front]
         
 
     def size(self):
@@ -121,13 +115,16 @@ class Queue:
 
         for i in range(self.buffer_size):
 
-            if self.front != None:
-                
+            if self.store[self.front] == None:
+                return str(elements)
+            
+            else:
+
                 elements.append(self.store[self.front])
                 self.front = (self.front+1) % self.buffer_size
             
             # toStr = [str[element] for element in elements]
-            return str(elements)
+        return str(elements)
             
 
 
