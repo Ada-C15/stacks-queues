@@ -25,25 +25,26 @@ class Queue:
         """
 
         #note:
-        #You could increment and decrement size if you want to keep track of size
+        #I can see from the tests that my implementation of enqueue does not allow for 
+        #mutliple enqueue of elements but I cannot figure out why...
 
         #check to see if queue is full (front == (back + 1) mod size;)
         if self.front == (self.rear + 1) % self.buffer_size:  #size?
             raise QueueFullException("Queue is full")
         
-        #if queue is empty
+        # # if queue is empty
         elif (self.front == -1):
             self.front = 0
             self.rear = 0
             self.store[self.rear] = element
 
         else:
-        #increment that back pointer
-            self.rear = (self.rear + 1) % self.buffer_size;
-            self.store[self.rear] = element;
+        #increment the back pointer
+            self.rear = (self.rear + 1) % self.buffer_size
+            self.store[self.rear] = element
+            self.size += 1
 
-        #why return None?
-        return None
+        return self.rear
 
     def dequeue(self):
         """ Removes an element from the Queue
@@ -62,8 +63,6 @@ class Queue:
             #reset front and back pointers to same position/empty queue
             self.front = -1
             self.rear = -1
-
-            #return temp value? why return None here?
             return temp
         
         else:
@@ -71,8 +70,6 @@ class Queue:
 
             #increment front counter 
             self.front = (self.front + 1) % self.buffer_size
-
-            #return None?
             return temp
 
         
@@ -118,22 +115,21 @@ class Queue:
             [3, 4, 7]
             Starting with the front of the Queue and
             ending with the rear of the Queue.
+
         """
-        str = []
+        elements = []
 
-        #modulus operater move through the queue (start current index at the front and keep adjusting until i reach the back)
-        #maybe use a while
-        #prob need to typecaste
-        
-        
-        current = self.front
+        for i in range(self.buffer_size):
 
-        while current is not None:
+            if self.front != None:
+                
+                elements.append(self.store[self.front])
+                self.front = (self.front+1) % self.buffer_size
+            
+            # toStr = [str[element] for element in elements]
+            return str(elements)
+            
 
-            current = (self.front + 1) % self.buffer_size
-            str.append(current)
-        
-        return str
 
 
 
