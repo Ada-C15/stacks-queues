@@ -53,8 +53,6 @@ class Queue:
 
         element = self.store[self.front]
         self.store[self.front] = None
-
-        
         self.front += 1
         self.size -= 1
             
