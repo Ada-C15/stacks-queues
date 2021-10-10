@@ -12,7 +12,7 @@ class Stack:
         """ Adds an element to the top of the Stack.
             Returns None
         """
-        pass
+        self.store.add_last(element) 
 
     def pop(self):
         """ Removes an element from the top
@@ -21,13 +21,21 @@ class Stack:
             The Stack is empty.
             returns None
         """
-        pass
+        # try to remove references to last node in stack
+        # if successful, return None
+        try:
+            return self.store.remove_last()
+            
+        # if there's a problem indicating an empty list,
+        # raise a StackEmptyException 
+        except:
+            raise StackEmptyException
 
     def empty(self):
         """ Returns True if the Stack is empty
             And False otherwise
         """
-        pass
+        return self.store.empty()
 
     def __str__(self):
         """ Returns the Stack in String form like:
