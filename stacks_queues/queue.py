@@ -26,10 +26,9 @@ class Queue:
         pass
 
     def dequeue(self):
-        """ Removes an element from the Queue
+        """ Removes and returns an element from the Queue
             Raises a QueueEmptyException if 
             The Queue is empty.
-            returns None
         """
         pass
 
