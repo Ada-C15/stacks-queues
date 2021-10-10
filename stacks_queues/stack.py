@@ -43,11 +43,4 @@ class Stack:
             Starting with the top of the Stack and
             ending with the bottom of the Stack.
         """
-        string_form_like = []
-        current = self.store.tail 
-
-        while current:
-            string_form_like.append(current.value)
-            current = current.last 
-
-        return string_form_like
+        pass
