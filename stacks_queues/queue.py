@@ -10,12 +10,16 @@ class QueueEmptyException(Exception):
 class Queue:
 
     def __init__(self):
-        self.store = [None] * INITIAL_QUEUE_SIZE
+        # self.store = [None] * INITIAL_QUEUE_SIZE
+        # self.buffer_size = INITIAL_QUEUE_SIZE
+        # self.front = -1
+        # self.rear = -1
+        # self.size = 0
+
+        self.store = []
         self.buffer_size = INITIAL_QUEUE_SIZE
-        self.front = -1
-        self.rear = -1
-        self.size = 0
-      
+
+        
 
     def enqueue(self, element):
         """ Adds an element to the Queue
@@ -23,35 +27,45 @@ class Queue:
             In the store are occupied
             returns None
         """
-        pass
-
+        if self.empty() or len(self.store) < self.buffer_size:
+            self.store.append(element)
+        else: # self.store == self.buffer_size:
+            raise QueueFullException("Queue is full")
+        
     def dequeue(self):
         """ Removes an element from the Queue
             Raises a QueueEmptyException if 
             The Queue is empty.
             returns None
         """
-        pass
+        if self.empty():
+            raise QueueEmptyException("Queue is empty")
+        else:
+            return self.store.pop(0)
 
     def front(self):
         """ Returns an element from the front
             of the Queue and None if the Queue
             is empty.  Does not remove anything.
         """
-        pass
+        if self.empty():
+            return None
+        else:
+            return self.store[0]
         
 
     def size(self):
         """ Returns the number of elements in
             The Queue
         """
-        pass
+        return len(self.store)
+        
 
     def empty(self):
         """ Returns True if the Queue is empty
             And False otherwise.
         """
-        pass
+        return len(self.store) == 0
 
     def __str__(self):
         """ Returns the Queue in String form like:
@@ -59,4 +73,9 @@ class Queue:
             Starting with the front of the Queue and
             ending with the rear of the Queue.
         """
-        pass
+        if self.empty():
+            return self.store
+        else:
+            return f'{self.store}'
+
+        

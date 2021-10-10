@@ -7,8 +7,6 @@ class Stack:
 
     def __init__(self):
         self.store = LinkedList()
-        # could I make a top of the stack? 
-        # self.store.head   
 
     def push(self, element):
         """ Adds an element to the top of the Stack.
