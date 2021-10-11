@@ -4,7 +4,7 @@
 # https://www.youtube.com/watch?v=VFSUWEAFmy4
 
 #======================================================
-INITIAL_QUEUE_SIZE = 5 # change back to 20
+INITIAL_QUEUE_SIZE = 20 # change back to 20
 
 class QueueFullException(Exception):
     pass
