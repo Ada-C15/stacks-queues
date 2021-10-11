@@ -12,7 +12,7 @@ class Stack:
         """ Adds an element to the top of the Stack.
             Returns None
         """ 
-        # here I'm deciding that the top of my stack is the head of link list with this method
+        # this sets the top of my stack is the head of link list with this method
         self.store.add_first(element)
         return
         
@@ -57,7 +57,7 @@ class Stack:
     def top(self):
         """ returns top of the stack without changing the stack, using public methods only
         """ 
-        # here I'm checking if stack is not empty
+        
         if not self.store.head:
             return None
         

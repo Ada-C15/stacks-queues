@@ -10,12 +10,6 @@ class QueueEmptyException(Exception):
 class Queue:
 
     def __init__(self):
-        # self.store = [None] * INITIAL_QUEUE_SIZE
-        # self.buffer_size = INITIAL_QUEUE_SIZE
-        # self.front = -1
-        # self.rear = -1
-        # self.size = 0
-
         self.store = []
         self.buffer_size = INITIAL_QUEUE_SIZE
 
@@ -29,7 +23,7 @@ class Queue:
         """
         if self.empty() or len(self.store) < self.buffer_size:
             self.store.append(element)
-        else: # self.store == self.buffer_size:
+        else: 
             raise QueueFullException("Queue is full")
         
     def dequeue(self):
