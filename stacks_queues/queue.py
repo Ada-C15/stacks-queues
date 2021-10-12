@@ -23,7 +23,13 @@ class Queue:
             In the store are occupied
             returns None
         """
-        pass
+        if self.size == self.buffer_size:
+            # Queue is full, raise error
+            raise QueueFullException()
+        else:
+            self.rear = (self.rear + 1) % self.buffer_size
+            self.store[self.rear] = element
+            self.size += 1
 
     def dequeue(self):
         """ Removes an element from the Queue
