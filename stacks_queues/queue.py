@@ -80,10 +80,7 @@ class Queue:
         """ Returns True if the Queue is empty
             And False otherwise.
         """
-        if self.size:
-            return False
-
-        return True
+        return self.size == 0
 
     def __str__(self):
         """ Returns the Queue in String form like:
