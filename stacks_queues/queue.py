@@ -75,7 +75,13 @@ class Queue:
             ending with the rear of the Queue.
         """
         buffer_list = []
-        for item in self.store:
-            if item:
-                buffer_list.append(item)
+        front = self.front + 1
+        size = 0
+        while size < self.size:
+            buffer_list.append(self.store[front])
+            front += 1
+            if front == 20:
+                front = 0
+            size += 1
+
         return str(buffer_list)
