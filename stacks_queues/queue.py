@@ -10,32 +10,63 @@ class QueueEmptyException(Exception):
 class Queue:
 
     def __init__(self):
-        self.store = []
+        self.store = [None] * INITIAL_QUEUE_SIZE 
+        # how many can I fit in circular buffer
         self.buffer_size = INITIAL_QUEUE_SIZE
-
-        
-
+        # initial pointer to start of queue (not within 0-19 indexes)
+        self.front = -1
+        # initial pointer to start of queue (not within 0-19 indexes)
+        self.rear = -1
+        # How many elements are already in the cb - initially zero 
+        self.size = 0
+    
     def enqueue(self, element):
         """ Adds an element to the Queue
             Raises a QueueFullException if all elements
             In the store are occupied
             returns None
         """
-        if self.empty() or len(self.store) < self.buffer_size:
-            self.store.append(element)
-        else: 
-            raise QueueFullException("Queue is full")
-        
+        # buffer.size = 20
+        # self.size  = 0
+        # self.rear = -1
+        # self.front = -1
+
+        # Queue is full
+        if self.size >= self.buffer_size:  # 0 > 20 ? 
+            raise QueueFullException("Queue is Full")
+
+        # if rear pointer is past the allowed size, cannot insert anymore, reset it 
+        if self.rear >= (self.buffer_size - 1):   # -1 >= 19 ? index
+            #reset rear
+            self.rear = -1
+
+        # after checking queue is empty and there's still space in queue we
+        # can insert it and need to move rear and update size to keep track 
+        self.store[self.rear + 1] = element
+        # keep track of how many elements in array
+        self.size += 1
+        self.rear += 1
+    
     def dequeue(self):
         """ Removes an element from the Queue
             Raises a QueueEmptyException if 
             The Queue is empty.
             returns None
         """
+        # check queue is not empty and then just if not empty, dequeue and update pointers and size
         if self.empty():
             raise QueueEmptyException("Queue is empty")
-        else:
-            return self.store.pop(0)
+
+        # self.front = -1
+        # buffer.size = 20
+        # self.size  = 0 
+        # not empty, just dequeue, update front pointer and size
+        if self.store[self.front]:
+            
+
+
+
+
 
     def front(self):
         """ Returns an element from the front
@@ -52,14 +83,15 @@ class Queue:
         """ Returns the number of elements in
             The Queue
         """
-        return len(self.store)
+        # return len(self.store)
         
 
     def empty(self):
         """ Returns True if the Queue is empty
             And False otherwise.
         """
-        return len(self.store) == 0
+        return self.size == 0
+    
 
     def __str__(self):
         """ Returns the Queue in String form like:
