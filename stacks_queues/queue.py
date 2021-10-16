@@ -11,11 +11,9 @@ class Queue:
 
     def __init__(self):
         self.store = [None] * INITIAL_QUEUE_SIZE 
-        # how many can I fit in circular buffer
         self.buffer_size = INITIAL_QUEUE_SIZE
-        # initial pointer to start of queue (not within 0-19 indexes)
+        # pointers
         self.front = -1
-        # initial pointer to start of queue (not within 0-19 indexes)
         self.rear = -1
         # How many elements are already in the cb - initially zero 
         self.size = 0
@@ -26,21 +24,19 @@ class Queue:
             In the store are occupied
             returns None
         """
-
         # Queue is full
-        if self.size >= self.buffer_size:  # 0 > 20 ? 
+        if self.size >= self.buffer_size:  
             raise QueueFullException("Queue is Full")
 
         # if rear pointer is past the allowed size, cannot insert anymore, reset it 
-        if self.rear >= (self.buffer_size - 1):   # -1 >= 19 ? index
+        if self.rear >= (self.buffer_size - 1):   # index, not size
             #reset rear
             self.rear = -1
 
-        # after checking queue is not full and there's still space in queue we
+        # after checking queue is not full & there's space in queue we
         # can insert it and need to move rear and update size to keep track 
-        
-        self.store[self.rear + 1] = element  # self.store[0] = element
-        # keep track of how many elements in array
+        self.store[self.rear + 1] = element 
+        # keep track of how many elements in array / where end of queue is
         self.size += 1
         self.rear += 1
 
@@ -50,32 +46,18 @@ class Queue:
             The Queue is empty.
             returns None
         """
-        # check queue is not empty and then just if not empty, dequeue and update pointers and size
         if self.empty():
             raise QueueEmptyException("Queue is empty")
 
-        if self.front >= (self.buffer_size - 1):   # -1 >= 19 ? index
-            #reset rear
+        if self.front >= (self.buffer_size - 1):  
             self.front = -1
 
-        # not empty, just dequeue, update front pointer and size
-        if self.store[self.front+1]:
-            dequeued = self.store[self.front+1]
+        # not empty?, just dequeue, update front pointer and size  
+        if self.store[self.front + 1]:
+            dequeued = self.store[self.front + 1]
             self.front += 1
             self.size -= 1 
             return dequeued
-
-        # self.store = [1, 2, 3] 
-        # self.buffer_size = 20
-        # self.front = 0
-        # self.rear = -1
-        # self.size = 3
-
-        # if self.store[self.front]:
-        #     dequeued = self.store[self.front]
-        #     self.front += 1
-        #     self.size -= 1 
-        #     return dequeued    
         
     def front(self):
         """ Returns an element from the front
@@ -105,10 +87,33 @@ class Queue:
             Starting with the front of the Queue and
             ending with the rear of the Queue.
         """
+        # return string of empty array
         if self.empty():
-            return self.store
-        else:
-            return f'{[elem for elem in self.store if elem]}'
+            return f'{self.store}'
+        
+        # will append to this arr, just what's not none in the correct order
+        str_queue = []
+        # temporary pointer so self.front doesn't actually move
+        front = self.front + 1
+        # front has made it past the end of the list
+        if front >= len(self.store):
+            # reset temp index it to start at the front of array
+            front = 0
 
+        # front hasn't caught up with rear
+        while front != self.rear:
+            str_queue.append(self.store[front])
+            # update pointer after appending
+            front += 1
+
+            if front >= (self.buffer_size):   
+                #reset to start of the loop
+                front = 0
+        #rear because before last element they are the same, 
+        # could do self.store[rear] bc we are really appending the last one
+        str_queue.append(self.store[front])
+        
+        return f'{str_queue}'
+        
 
         
