@@ -26,10 +26,6 @@ class Queue:
             In the store are occupied
             returns None
         """
-        # buffer.size = 20
-        # self.size  = 0
-        # self.rear = -1
-        # self.front = -1
 
         # Queue is full
         if self.size >= self.buffer_size:  # 0 > 20 ? 
@@ -40,13 +36,14 @@ class Queue:
             #reset rear
             self.rear = -1
 
-        # after checking queue is empty and there's still space in queue we
+        # after checking queue is not full and there's still space in queue we
         # can insert it and need to move rear and update size to keep track 
-        self.store[self.rear + 1] = element
+        
+        self.store[self.rear + 1] = element  # self.store[0] = element
         # keep track of how many elements in array
         self.size += 1
         self.rear += 1
-    
+
     def dequeue(self):
         """ Removes an element from the Queue
             Raises a QueueEmptyException if 
@@ -57,17 +54,29 @@ class Queue:
         if self.empty():
             raise QueueEmptyException("Queue is empty")
 
-        # self.front = -1
-        # buffer.size = 20
-        # self.size  = 0 
+        if self.front >= (self.buffer_size - 1):   # -1 >= 19 ? index
+            #reset rear
+            self.front = -1
+
         # not empty, just dequeue, update front pointer and size
-        if self.store[self.front]:
-            
+        if self.store[self.front+1]:
+            dequeued = self.store[self.front+1]
+            self.front += 1
+            self.size -= 1 
+            return dequeued
 
+        # self.store = [1, 2, 3] 
+        # self.buffer_size = 20
+        # self.front = 0
+        # self.rear = -1
+        # self.size = 3
 
-
-
-
+        # if self.store[self.front]:
+        #     dequeued = self.store[self.front]
+        #     self.front += 1
+        #     self.size -= 1 
+        #     return dequeued    
+        
     def front(self):
         """ Returns an element from the front
             of the Queue and None if the Queue
@@ -76,22 +85,19 @@ class Queue:
         if self.empty():
             return None
         else:
-            return self.store[0]
-        
+            return self.store[self.front]
 
     def size(self):
         """ Returns the number of elements in
             The Queue
         """
-        # return len(self.store)
+        return self.size
         
-
     def empty(self):
         """ Returns True if the Queue is empty
             And False otherwise.
         """
         return self.size == 0
-    
 
     def __str__(self):
         """ Returns the Queue in String form like:
@@ -102,6 +108,7 @@ class Queue:
         if self.empty():
             return self.store
         else:
-            return f'{self.store}'
+            return f'{[elem for elem in self.store if elem]}'
+
 
         
