@@ -1,25 +1,28 @@
-
 class EmptyListError(Exception):
     pass
 
 # Defines a node in the singly linked list
+
+
 class Node:
-    def __init__(self, value, next_node = None, previous_node = None):
+    def __init__(self, value, next_node=None, previous_node=None):
         self.value = value
         self.next = next_node
         self.previous = previous_node
 
 # Defines the singly linked list
+
+
 class LinkedList:
     def __init__(self):
-        self.head = None # keep the head private. Not accessible outside this class
+        self.head = None  # keep the head private. Not accessible outside this class
         self.tail = None
-
 
     # method to add a new node with the specific data value in the linked list
     # insert the new node at the beginning of the linked list
     # Time Complexity: O(1)
     # Space Complexity O(1)
+
     def add_first(self, value):
         new_node = Node(value)
         new_node.next = self.head
@@ -43,9 +46,8 @@ class LinkedList:
         self.head = self.head.next
         if self.head:
             self.head.previous = None
-        
-        return value
 
+        return value
 
     def empty(self):
         return not self.head
@@ -57,7 +59,7 @@ class LinkedList:
     def search(self, value):
         if not self.head:
             return False
-        
+
         if self.head.value == value:
             return True
 
@@ -66,18 +68,18 @@ class LinkedList:
             if current.value == value:
                 return True
             current = current.next
-        
-        return False
 
+        return False
 
     # method to return the max value in the linked list
     # returns the data value and not the node
     # Time Complexity:  O(n)
     # Space Complexity: O(1)
+
     def find_max(self):
         if not self.head:
             return None
-        
+
         current = self.head
         max = current.value
 
@@ -102,7 +104,7 @@ class LinkedList:
             if min > current.value:
                 min = current.value
             current = current.next
-        
+
         return min
 
     # method that returns the length of the singly linked list
@@ -111,13 +113,13 @@ class LinkedList:
     def length(self):
         if not self.head:
             return 0
-        
+
         current = self.head
         length = 0
         while current:
             length += 1
             current = current.next
-        
+
         return length
 
     # method that returns the value at a given index in the linked list
@@ -136,7 +138,7 @@ class LinkedList:
                 return current.value
             count += 1
             current = current.next
-        
+
         return None
 
     # method to print all the values in the linked list
@@ -149,7 +151,7 @@ class LinkedList:
         while current:
             values.append(current.value)
             current = current.next
-        
+
         print(", ".join(values))
 
     # method to delete the first node found with specified value
@@ -158,7 +160,7 @@ class LinkedList:
     def delete(self, value):
         if not self.head:
             return None
-        
+
         current = self.head
         if current.value == value:
             self.head = current.next
@@ -201,16 +203,16 @@ class LinkedList:
 
         self.head = prev
 
-
     # method that inserts a given value as a new last node in the linked list
     # Time Complexity:  O(n) where n is the number of nodes
     # Space Complexity: O(1)
+
     def add_last(self, value):
         new_node = Node(value)
         if not self.head:
             self.add_first(value)
             return
-    
+
         self.tail.next = new_node
         new_node.previous = self.tail
         self.tail = new_node
@@ -247,6 +249,7 @@ class LinkedList:
             current = current.next
 
         return ", ".join(values)
+
 
 ll = LinkedList()
 ll.add_first(5)

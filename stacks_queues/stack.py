@@ -12,7 +12,7 @@ class Stack:
         """ Adds an element to the top of the Stack.
             Returns None
         """
-        self.store.add_first(element)
+        self.store.add_last(element)
         return None
 
     def pop(self):
@@ -23,7 +23,7 @@ class Stack:
             returns None
         """
         # if stack is empty -> raise StackEmptyException (is there anything in this class??)
-        if self.store.length == 0:
+        if self.store.length() == 0:
             raise StackEmptyException
         else:
             return self.store.remove_last()
@@ -32,10 +32,8 @@ class Stack:
         """ Returns True if the Stack is empty
             And False otherwise
         """
-        if self.store.length == 0:
+        if self.store.length() == 0:
             return True
-        else:
-            return False
 
     def __str__(self):
         """ Returns the Stack in String form like:
@@ -45,5 +43,5 @@ class Stack:
         """
         # starting w/ top of stack -> bottom of stack --> need to reverse
         self.store.reverse()
-
         return self.store.__str__()
+
