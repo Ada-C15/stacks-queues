@@ -23,7 +23,12 @@ class Queue:
             In the store are occupied
             returns None
         """
-        pass
+        if self.store[-1] ==None:
+            for i in range(len(self.store)):
+                if self.store[i] == None:
+                    self.store[i] = element
+                    return element
+        return None
 
     def dequeue(self):
         """ Removes and returns an element from the Queue
@@ -58,4 +63,9 @@ class Queue:
             Starting with the front of the Queue and
             ending with the rear of the Queue.
         """
-        pass
+        queue_str = "["
+        last_item = str(self.store[-1])
+        items_str = ", ".join(str(item) for item in self.store if item is not None)
+        queue_str += items_str + "]"
+        return queue_str
+        
