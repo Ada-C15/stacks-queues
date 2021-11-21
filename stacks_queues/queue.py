@@ -1,4 +1,3 @@
-
 INITIAL_QUEUE_SIZE = 20
 
 class QueueFullException(Exception):
