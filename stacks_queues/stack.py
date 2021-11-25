@@ -1,7 +1,27 @@
 from stacks_queues.linked_list import LinkedList
 
 class StackEmptyException(Exception):
-    pass
+    '''
+    https://towardsdatascience.com/how-to-define-custom-exception-classes-in-python-bfa346629bca
+    '''
+    def __init__(self, *args):
+        if args:
+            self.message = args[0]
+        else:
+            self.message = None
+    
+    def __str__(self):
+        print('calling str')
+        if self.message:
+            return 'StackEmptyException, {0}'.format(self.message)
+        else:
+            return 'StackEmptyException has been raised'
+    '''
+    raise StackEmptyException # MyCustom Error is being raised without any arguments, so None will be sent to the message attribute in the object. The str method will be called and will print the message 'MyCustomEror message has been raised'
+    raise StackEmptyException('We have a problem')       
+    '''
+
+
 
 class Stack:
 
