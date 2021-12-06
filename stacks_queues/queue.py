@@ -15,7 +15,6 @@ class Queue:
         self.front = -1
         self.rear = -1
         self.size = 0
-      
 
     def enqueue(self, element):
         """ Adds an element to the Queue
