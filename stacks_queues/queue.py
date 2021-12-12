@@ -66,17 +66,6 @@ class Queue:
             self.store[self.rear] = element
             self.size = self.size + 1
 
-        # if self.size == self.buffer_size:
-        #     raise QueueFullException('This will break it')
-            
-        # else:
-        #     self.rear = (self.rear + 1) % INITIAL_QUEUE_SIZE
-        #     self.store[self.rear] = element
-        #     self.size = self.size + 1
-        #     if self.front == -1:
-        #         self.front = 0
-
-
     def dequeue(self):
         """ Removes and returns an element from the Queue
             Raises a QueueEmptyException if 
@@ -109,9 +98,6 @@ class Queue:
             return None
         return self.store[self.front]
         
-
-        
-
     def size(self):
         """ Returns the number of elements in
             The Queue
@@ -155,11 +141,7 @@ class Queue:
 
         return str(tmp)
         
-        # temp = []
-        # for i in range(self.front,self.rear+1):
-        #     if self.store[i]!= None:
-        #         temp.append(self.store[i])
-        # return str(temp)
+
 
             
         
