@@ -2,10 +2,7 @@ from typing import ItemsView
 
 
 INITIAL_QUEUE_SIZE = 20
-"""
-https://towardsdatascience.com/circular-queue-or-ring-buffer-92c7b0193326
-https://www.geeksforgeeks.org/circular-queue-set-1-introduction-array-implementation/
-"""
+
 class QueueFullException(Exception):
     def __init__(self, *args):
         if args:
