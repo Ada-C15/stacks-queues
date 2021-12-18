@@ -21,10 +21,7 @@ class Stack:
             The Stack is empty.
             returns None
         """
-        if not self.store:
-            raise StackEmptyException("The stack is empty.")
-        self.store.remove_first()
-      
+        return self.store.remove_first()
 
     def empty(self):
         """ Returns True if the Stack is empty
