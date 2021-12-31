@@ -62,11 +62,8 @@ class Queue:
         """
         if self.empty():
             raise QueueEmptyException
-        
-        dequeued_element_value = self.store[self.front] if not self.empty() else None
 
-        # TODO: explore why this does not work to pass the tests
-        # dequeued_element_value = self.front()
+        dequeued_element_value = self.return_front()
 
         self.store[self.front] = None
         self.front = (self.front + 1) % self.buffer_size
@@ -74,14 +71,14 @@ class Queue:
 
         return dequeued_element_value
 
-    def front(self):
+    def return_front(self):
         """ Returns an element from the front
             of the Queue and None if the Queue
             is empty.  Does not remove anything.
         """
         if not self.empty():
             return self.store[self.front]
-        else: 
+        else:
             return None
 
     def size(self):
