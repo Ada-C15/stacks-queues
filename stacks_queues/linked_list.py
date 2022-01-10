@@ -48,7 +48,7 @@ class LinkedList:
 
 
     def empty(self):
-      return not self.head
+        return not self.head
 
     # method to find if the linked list contains a node with specified value
     # returns true if found, false otherwise
@@ -150,7 +150,7 @@ class LinkedList:
             values.append(current.value)
             current = current.next
         
-        print(", ".join(values))
+        return values
 
     # method to delete the first node found with specified value
     # Time Complexity:  O(n) where n is the number of nodes
