@@ -1,4 +1,3 @@
-
 class EmptyListError(Exception):
     pass
 
