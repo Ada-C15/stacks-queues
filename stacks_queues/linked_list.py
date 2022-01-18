@@ -1,4 +1,3 @@
-
 class EmptyListError(Exception):
     pass
 
@@ -48,7 +47,7 @@ class LinkedList:
 
 
     def empty(self):
-      return not self.head
+        return not self.head
 
     # method to find if the linked list contains a node with specified value
     # returns true if found, false otherwise
