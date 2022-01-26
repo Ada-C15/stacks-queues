@@ -10,12 +10,7 @@ class QueueEmptyException(Exception):
 class Queue:
 
     def __init__(self):
-        self.store = [None] * INITIAL_QUEUE_SIZE
-        self.buffer_size = INITIAL_QUEUE_SIZE
-        self.front = -1
-        self.rear = -1
-        self.size = 0
-      
+        self.store = []      
 
     def enqueue(self, element):
         """ Adds an element to the Queue
@@ -23,34 +18,44 @@ class Queue:
             In the store are occupied
             returns None
         """
-        pass
+        if len(self.store) == INITIAL_QUEUE_SIZE:
+            raise QueueFullException
+        
+        self.store.append(element)
+    
 
     def dequeue(self):
         """ Removes and returns an element from the Queue
             Raises a QueueEmptyException if 
             The Queue is empty.
         """
-        pass
+        if len(self.store) == 0:
+            raise QueueEmptyException
+        
+        return self.store.pop(0)
+
 
     def front(self):
         """ Returns an element from the front
             of the Queue and None if the Queue
             is empty.  Does not remove anything.
         """
-        pass
+        if len(self.store) == 0:
+            return None
+        else: 
+            return self.store[0]
         
-
     def size(self):
         """ Returns the number of elements in
             The Queue
         """
-        pass
+        return len(self.store)
 
     def empty(self):
         """ Returns True if the Queue is empty
             And False otherwise.
         """
-        pass
+        return len(self.store) == 0
 
     def __str__(self):
         """ Returns the Queue in String form like:
@@ -58,4 +63,4 @@ class Queue:
             Starting with the front of the Queue and
             ending with the rear of the Queue.
         """
-        pass
+        return str(self.store)
