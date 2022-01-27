@@ -15,6 +15,7 @@ def test_it_can_create_a_queue(queue):
 
 def test_you_can_add_to_queue(queue):
     queue.enqueue(10)
+    print(str(queue))
     assert str(queue) == "[10]"
 
 
