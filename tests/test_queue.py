@@ -57,5 +57,6 @@ def test_with_large_queue(queue):
     
     assert str(queue) == "[30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220]"
 
-    with pytest.raises(QueueFullException):
-        queue.enqueue('This will break it')
+    #shouldn't be full with buffer resize
+    #with pytest.raises(QueueFullException):
+    #    queue.enqueue('This will break it')
