@@ -150,7 +150,7 @@ class LinkedList:
             values.append(current.value)
             current = current.next
         
-        print(", ".join(values))
+        return values
 
     # method to delete the first node found with specified value
     # Time Complexity:  O(n) where n is the number of nodes
